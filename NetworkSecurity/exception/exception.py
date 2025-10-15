@@ -16,7 +16,7 @@ def error_message_details(error: Exception, error_details: Optional[TracebackTyp
     return "Error found in script [{0}] in line [{1}], Error message is [{2}]".format(file_name, line_no, str(error))
 
 class CustomException(Exception):
-    def __init__(self, error_message: Exception, error_detail: Optional[TracebackType]):
+    def __init__(self, error_message: Exception, error_detail: Optional[TracebackType] = None):
         super().__init__(error_message)
         self.error_message = error_message_details(error_message, error_details=error_detail)
 
