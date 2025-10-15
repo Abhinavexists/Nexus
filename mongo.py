@@ -1,0 +1,29 @@
+
+import os
+import certifi
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Create a new client and connect to the server
+# client = MongoClient(uri, server_api=ServerApi('1'))
+
+uri = os.getenv('MONGO_URL')
+
+client = MongoClient(
+    uri,
+    tls=True,
+    tlsCAFile=certifi.where(),
+    tlsAllowInvalidCertificates=False,
+    server_api=ServerApi('1'),
+    serverSelectionTimeoutMS=10000
+)
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
