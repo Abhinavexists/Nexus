@@ -1,13 +1,11 @@
 import os
-import sys
 import yaml
-import pickle
 from pathlib import Path
 
 from NetworkSecurity.exception.exception import CustomException
 from NetworkSecurity.logging.logging import logging
 
-def read_yaml_file(file_path: Path):
+def read_yaml_file(file_path: Path) -> dict:
     try:
         with open(file_path, 'rb') as file:
             return yaml.safe_load(file)

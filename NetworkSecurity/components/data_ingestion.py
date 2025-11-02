@@ -1,7 +1,6 @@
 import os
 import numpy as np
 import pandas as pd
-from typing import List
 from pathlib import Path
 from dotenv import load_dotenv
 from pymongo.mongo_client import MongoClient
@@ -23,7 +22,7 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e)
         
-    def export_collection_as_dataframe(self):
+    def export_collection_as_dataframe(self) -> pd.DataFrame:
         """Fetch collection data from MongoDB and return it as a DataFrame."""
         try:
             database_name = self.data_ingestion_config.database_name
@@ -43,7 +42,7 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e)
         
-    def export_data_into_feature_store(self, dataframe: pd.DataFrame):
+    def export_data_into_feature_store(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         """Save the fetched data into a local feature store CSV."""
         try:
             feature_store_file_path = self.data_ingestion_config.feature_store_file_path
@@ -57,7 +56,7 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e)
         
-    def split_data_into_test_train(self, dataframe: pd.DataFrame):
+    def split_data_into_test_train(self, dataframe: pd.DataFrame) -> None:
         """Split the dataset into train and test sets and store them."""
         try:
             train_set, test_set = train_test_split(
@@ -82,7 +81,7 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e)
         
-    def initiate_data_ingestion(self):
+    def initiate_data_ingestion(self) -> DataIngestionArtifact:
         """Main pipeline that runs data fetching, storing, and splitting."""
         try:
             dataframe = self.export_collection_as_dataframe()

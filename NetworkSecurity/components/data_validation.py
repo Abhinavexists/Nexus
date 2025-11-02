@@ -1,11 +1,9 @@
-import os
 import pandas as pd
 from scipy.stats import ks_2samp
 from pathlib import Path
-from typing import Optional
 
 from NetworkSecurity.constant.training_pipeline import SCHEME_FILE_PATH
-from NetworkSecurity.entity.config import DataIngestionConfig, DataValidationConfig
+from NetworkSecurity.entity.config import DataValidationConfig
 from NetworkSecurity.entity.artifact import DataIngestionArtifact, DataValidationArtifact
 from NetworkSecurity.exception.exception import CustomException
 from NetworkSecurity.utils.utils import read_yaml_file, write_yaml_file
@@ -43,7 +41,7 @@ class DataValidation:
         except Exception as e:
             raise CustomException(e)
         
-    def detect_data_drift(self, base_df: pd.DataFrame, current_df: pd.DataFrame, threshold:float = 0.96):
+    def detect_data_drift(self, base_df: pd.DataFrame, current_df: pd.DataFrame, threshold:float = 0.96) -> bool:
         try:
             drift_status = False
             report = {}
@@ -77,7 +75,7 @@ class DataValidation:
             raise CustomException(e)
 
         
-    def intitiate_data_validation(self) -> DataValidationArtifact:
+    def initiate_data_validation(self) -> DataValidationArtifact:
         try:
             train_file_path = self.data_ingestion_artifact.train_file_path
             test_file_path = self.data_ingestion_artifact.test_file_path
@@ -108,7 +106,7 @@ class DataValidation:
                 self.data_validation_config.valid_data_test_path, index=False, header=True
             )
             data_validation_artifact = DataValidationArtifact(
-                            validation_pool=status,
+                            validation_status=status,
                             valid_train_file_path=self.data_ingestion_artifact.train_file_path,
                             valid_test_file_path=self.data_ingestion_artifact.test_file_path,
                             invalid_train_file_path=Path(""), # used instead of None
@@ -117,6 +115,6 @@ class DataValidation:
                         )
             
             return data_validation_artifact
-            
+
         except Exception as e:
             raise CustomException(e)
