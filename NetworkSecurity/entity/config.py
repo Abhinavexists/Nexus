@@ -60,3 +60,49 @@ class DataIngestionConfig:
             self.database_name = training_pipeline.DATA_INGESTION_DATABASE_NAME
         except Exception as e:
             raise CustomException(e)
+        
+class DataValidationConfig:
+    def __init__(self, training_pipeline_config: TrainingPipeineConfig):
+        try:
+            self.data_validation_dir: Path = (
+                training_pipeline_config.artifact_dir /
+                training_pipeline.DATA_VALIDATION_DIR_NAME 
+            )
+            
+            self.valid_data_dir: Path = (
+                self.data_validation_dir /
+                training_pipeline.DATA_VALIDATION_VALID_DIR
+            )
+
+            self.invalid_data_dir: Path = (
+                self.data_validation_dir /
+                training_pipeline.DATA_VALIDATION_INVALID_DIR
+            )
+
+            self.valid_data_train_path: Path = (
+                self.valid_data_dir / 
+                training_pipeline.TRAIN_FILE_NAME
+            )
+
+            self.valid_data_test_path: Path = (
+                self.valid_data_dir / 
+                training_pipeline.TEST_FILE_NAME
+            )
+
+            self.invalid_data_train_path: Path = (
+                self.invalid_data_dir / 
+                training_pipeline.TRAIN_FILE_NAME
+            )
+
+            self.invalid_data_test_path: Path = (
+                self.invalid_data_dir /
+                training_pipeline.TEST_FILE_NAME
+            )
+
+            self.drift_report_file_path: Path = (
+                self.data_validation_dir /
+                training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR /
+                training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME
+            )
+        except Exception as e:
+            raise CustomException(e)
