@@ -88,10 +88,10 @@ class DataValidation:
             test_status = self.validate_number_of_columns(test_dataframe)
 
             if not train_status:
-                error_message = f"Train Dataframe doesn't have all the columns \n"
+                error_message = f"Train Dataframe doesn't have all the columns - {train_status}\n"
                 raise CustomException(Exception(error_message))
             if not test_status:
-                error_message = f"Test Dataframe doesn't have all the columns \n"
+                error_message = f"Test Dataframe doesn't have all the columns - {test_status}\n"
                 raise CustomException(Exception(error_message))
 
             status = self.detect_data_drift(base_df=train_dataframe, current_df=test_dataframe)

@@ -4,11 +4,11 @@ from NetworkSecurity.exception.exception import CustomException
 from NetworkSecurity.logging.logging import logging
 from NetworkSecurity.entity.artifact import DataIngestionArtifact
 from NetworkSecurity.components.data_validation import DataValidation
-from NetworkSecurity.entity.config import DataIngestionConfig, TrainingPipeineConfig, DataValidationConfig
+from NetworkSecurity.entity.config import DataIngestionConfig, TrainingPipelineConfig, DataValidationConfig
 
 if __name__ == "__main__":
     try:
-        training_pipeline_config = TrainingPipeineConfig()
+        training_pipeline_config = TrainingPipelineConfig()
         data_ingestion_config = DataIngestionConfig(training_pipeline_config)
         data_ingestion = DataIngestion(data_ingestion_config)
         logging.info('Initiate the data Ingestion')

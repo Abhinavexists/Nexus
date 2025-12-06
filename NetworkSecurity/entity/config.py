@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from datetime import datetime
 from NetworkSecurity.constant import training_pipeline
@@ -9,7 +8,7 @@ from NetworkSecurity.exception.exception import CustomException
 # So if i create multiple instances of TrainingPipelineConfig, they’ll all get the same timestamp (the time the class was first defined), 
 # not the time of creation.
 
-# class TrainingPipeineConfig:
+# class TrainingPipelineConfig:
 #     def __init__(self, timestamp = datetime.now()):
 #         timestamp = timestamp.strftime("%m_%d_%Y_%H_%M_%S")
 #         self.pipeline_name = training_pipeline.PIPELINE_NAME
@@ -18,7 +17,7 @@ from NetworkSecurity.exception.exception import CustomException
 #         self.timestamp: str = timestamp
 
 
-class TrainingPipeineConfig:
+class TrainingPipelineConfig:
     def __init__(self, timestamp:str | None = None):
         try:
             if timestamp is None:
@@ -33,7 +32,7 @@ class TrainingPipeineConfig:
         
 
 class DataIngestionConfig:
-    def __init__(self, training_pipeline_config: TrainingPipeineConfig):
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         try:
             self.data_ingestion_dir: Path = Path(training_pipeline_config.artifact_dir) / training_pipeline.DATA_INGESTION_DIR_NAME
 
@@ -62,7 +61,7 @@ class DataIngestionConfig:
             raise CustomException(e)
         
 class DataValidationConfig:
-    def __init__(self, training_pipeline_config: TrainingPipeineConfig):
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         try:
             self.data_validation_dir: Path = (
                 training_pipeline_config.artifact_dir /
@@ -106,3 +105,31 @@ class DataValidationConfig:
             )
         except Exception as e:
             raise CustomException(e)
+
+class DataTransformationConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        try:
+            self.data_transformation_dir: Path = (
+                training_pipeline_config.artifact_dir / training_pipeline.DATA_TRANSFORMATION_DIR_NAME
+            )
+
+            self.transformed_train_file_path: Path = (
+                self.data_transformation_dir /
+                training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR /
+                training_pipeline.TRAIN_FILE_NAME.replace("csv", "npy")
+            )
+
+            self.transformed_test_file_path: Path = (
+                self.data_transformation_dir /
+                training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR /
+                training_pipeline.TEST_FILE_NAME.replace("csv", "npy")
+            )
+
+            self.transformed_object_file_path: Path = (
+                self.data_transformation_dir /
+                training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR /
+                training_pipeline.PREPROCESSING_OBJECT_FILE_NAME
+            )
+        except Exception as e:
+            raise CustomException(e)
+    
