@@ -30,10 +30,10 @@ def write_yaml_file(file_path: Path, content: object, replace: bool = False) -> 
 def save_numpy_array_data(file_path: Path, array: np.array):
     try:
         dir_path = Path(file_path).parent
-        dir_path.mkdir(exist_ok=True)
+        dir_path.mkdir(parents=True, exist_ok=True)
         with open(file_path, 'wb') as file:
             np.save(file, array)
-            
+
     except CustomException as e:
         raise CustomException(e)
     
@@ -42,11 +42,12 @@ def save_object(file_path: Path, obj: object):
         logging.info('Entered the save_object method of utils')
 
         dir_path = Path(file_path).parent
-        dir_path.mkdir(exist_ok=True)
+        dir_path.mkdir(parents=True, exist_ok=True)
 
         with open(file_path, 'wb') as file_obj:
             pickle.dump(obj, file_obj)
         
         logging.info('Exited the save_object method of utils')
+    
     except CustomException as e:
         raise CustomException(e)
