@@ -24,10 +24,10 @@ from NetworkSecurity.logging.logging import logging
 
 class DataTransformation:
     def __init__(self, data_validation_artifact: DataValidationArtifact,
-                 data_transforamtion_config: DataTransformationConfig):
+                 data_transformation_config: DataTransformationConfig):
         try:
             self.data_validation_artifact = data_validation_artifact
-            self.data_transformation_config = data_transforamtion_config
+            self.data_transformation_config = data_transformation_config
         except CustomException as e:
             raise CustomException(e)
         
@@ -49,7 +49,7 @@ class DataTransformation:
         Returns:
           A Pipeline object
         """
-        logging.info("Entered get_data_trnasformer_object method of Trnasformation class")
+        logging.info("Entered get_data_transformer_object method of Transformation class")
         
         try:
            imputer:KNNImputer = KNNImputer(**DATA_TRANSFORMATION_IMPUTER_PARAMS)
