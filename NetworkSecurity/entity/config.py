@@ -18,7 +18,7 @@ from NetworkSecurity.exception.exception import CustomException
 
 
 class TrainingPipelineConfig:
-    def __init__(self, timestamp:str | None = None):
+    def __init__(self, timestamp: str | None = None):
         try:
             if timestamp is None:
                 timestamp = datetime.now().strftime("%m_%d_%Y_%H_%M_%S")
@@ -27,9 +27,10 @@ class TrainingPipelineConfig:
             self.artifact_name = training_pipeline.ARTIFACT_DIR
             self.artifact_dir: Path = Path(self.artifact_name) / timestamp
             self.timestamp: str = timestamp
+
         except Exception as e:
             raise CustomException(e)
-        
+
 
 class DataIngestionConfig:
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
@@ -54,20 +55,22 @@ class DataIngestionConfig:
                 training_pipeline.TEST_FILE_NAME
             )
 
-            self.train_test_split_ratio = training_pipeline.DATA_INGESTION_TEST_TRAIN_SPLIT_RATION
+            self.train_test_split_ratio = training_pipeline.DATA_INGESTION_TEST_TRAIN_SPLIT_RATIO
             self.collection_name = training_pipeline.DATA_INGESTION_COLLECTION_NAME
             self.database_name = training_pipeline.DATA_INGESTION_DATABASE_NAME
+
         except Exception as e:
             raise CustomException(e)
-        
+
+
 class DataValidationConfig:
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         try:
             self.data_validation_dir: Path = (
                 training_pipeline_config.artifact_dir /
-                training_pipeline.DATA_VALIDATION_DIR_NAME 
+                training_pipeline.DATA_VALIDATION_DIR_NAME
             )
-            
+
             self.valid_data_dir: Path = (
                 self.data_validation_dir /
                 training_pipeline.DATA_VALIDATION_VALID_DIR
@@ -79,17 +82,17 @@ class DataValidationConfig:
             )
 
             self.valid_data_train_path: Path = (
-                self.valid_data_dir / 
+                self.valid_data_dir /
                 training_pipeline.TRAIN_FILE_NAME
             )
 
             self.valid_data_test_path: Path = (
-                self.valid_data_dir / 
+                self.valid_data_dir /
                 training_pipeline.TEST_FILE_NAME
             )
 
             self.invalid_data_train_path: Path = (
-                self.invalid_data_dir / 
+                self.invalid_data_dir /
                 training_pipeline.TRAIN_FILE_NAME
             )
 
@@ -103,8 +106,10 @@ class DataValidationConfig:
                 training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR /
                 training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME
             )
+
         except Exception as e:
             raise CustomException(e)
+
 
 class DataTransformationConfig:
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
@@ -130,6 +135,7 @@ class DataTransformationConfig:
                 training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR /
                 training_pipeline.PREPROCESSING_OBJECT_FILE_NAME
             )
+
         except Exception as e:
             raise CustomException(e)
-    
+

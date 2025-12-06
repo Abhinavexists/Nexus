@@ -23,6 +23,7 @@ class NetworkDataExtract():
     def __init__(self):
         try:
             pass
+        
         except Exception as e:
             raise CustomException(e)
         
@@ -33,6 +34,7 @@ class NetworkDataExtract():
             records = list(json.loads(data.T.to_json()).values())
             logging.info('records are ready')
             return records
+        
         except Exception as e:
             raise CustomException(e)
     
@@ -55,6 +57,7 @@ class NetworkDataExtract():
             logging.info('collections is ready')
 
             return len(self.records)
+        
         except Exception as e:
             raise CustomException(e)
         
