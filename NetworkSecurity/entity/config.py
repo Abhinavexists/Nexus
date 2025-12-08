@@ -139,3 +139,23 @@ class DataTransformationConfig:
         except Exception as e:
             raise CustomException(e)
 
+
+class ModelTrainerConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        try:
+            self.model_trainer_dir: Path = (
+                training_pipeline_config.artifact_dir /
+                training_pipeline.MODEL_TRAINER_DIR_NAME
+            )
+
+            self.trained_model_file_path: Path = (
+                training_pipeline_config.artifact_dir /
+                training_pipeline.MODEL_TRAINER_TRAINED_MODEL_DIR
+            )
+
+            self.expected_accuracy: float = training_pipeline.MODEL_TRAINER_EXPECTED_SCORE
+            self.overfitting_underfitting_threshold: float = training_pipeline.MODEL_TRAINER_OCERFITTING_UNDERFITTING_THRESHOLD
+        
+        except Exception as e:
+            raise CustomException(e)
+

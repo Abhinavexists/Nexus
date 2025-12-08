@@ -29,7 +29,7 @@ class DataTransformation:
             self.data_validation_artifact = data_validation_artifact
             self.data_transformation_config = data_transformation_config
 
-        except CustomException as e:
+        except Exception as e:
             raise CustomException(e)
 
     @staticmethod
@@ -37,7 +37,7 @@ class DataTransformation:
         try:
             return pd.read_csv(file_path)
 
-        except CustomException as e:
+        except Exception as e:
             raise CustomException(e)
 
     def get_data_transformer_object(self) -> Pipeline:
