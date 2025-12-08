@@ -4,9 +4,6 @@ from sklearn.pipeline import Pipeline
 
 from typing import Any
 
-from NetworkSecurity.constant.training_pipeline import SAVED_MODEL_DIR, MODEL_FILE_NAME
-
-from NetworkSecurity.logging.logging import logging
 from NetworkSecurity.exception.exception import CustomException
 
 

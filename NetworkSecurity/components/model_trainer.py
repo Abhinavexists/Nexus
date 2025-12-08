@@ -1,8 +1,8 @@
 import numpy as np
+import mlflow
+import mlflow.sklearn as mlsk
 from pathlib import Path
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import r2_score
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import (
     AdaBoostClassifier,
@@ -18,11 +18,11 @@ from NetworkSecurity.utils.ml_utils import evaluate_models
 from NetworkSecurity.utils.utils import (
     save_object,
     load_object,
-    save_numpy_array_data,
     load_numpy_array_data
 )
 
 from NetworkSecurity.utils.ml_utils import get_classification_score
+from NetworkSecurity.entity.artifact import ClassificationMetricArtifact
 
 from NetworkSecurity.logging.logging import logging
 from NetworkSecurity.exception.exception import CustomException
@@ -39,6 +39,18 @@ class ModelTrainer:
         except Exception as e:
             raise CustomException(e)
         
+    def track_mlfow(self, best_model, classificationmetric: ClassificationMetricArtifact):
+        with mlflow.start_run():
+            f1_score = classificationmetric.f1_score
+            precision_score = classificationmetric.precision_score
+            recall_score = classificationmetric.recall_score
+
+            mlflow.log_metric('f1_score', f1_score)
+            mlflow.log_metric('precision', precision_score)
+            mlflow.log_metric('recall_score', recall_score)
+            mlsk.log_model(best_model, 'model')
+
+
     def train_model(self, x_train: np.ndarray, y_train: np.ndarray, x_test: np.ndarray, y_test: np.ndarray):
         try:
             models = {
@@ -93,10 +105,13 @@ class ModelTrainer:
 
             classification_train_metric = get_classification_score(y_true=y_train,y_pred=y_train_pred)
 
+            self.track_mlfow(best_model, classification_train_metric)
+
             y_test_pred = best_model.predict(x_test)
             classification_test_metric = get_classification_score(y_true=y_test,y_pred=y_test_pred)
 
             # TODO: track with mlflow -> me
+            self.track_mlfow(best_model, classification_test_metric)
 
             preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
                 
