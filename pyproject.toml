@@ -1,7 +1,45 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "mlops-project"
+name = "Nexus"
 version = "0.1.0"
-description = "Add your description here"
+description = "Network Security Classification and Phishing Detection ML Pipeline"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+license = {text = "MIT"}
+authors = [
+    {name = "Abhinav", email = "abhinavkumarsingh2023@gmail.com"}
+]
+keywords = [
+    "machine-learning",
+    "mlops",
+    "network-security",
+    "phishing-detection",
+    "classification"
+]
+
+dependencies = [
+    "numpy==2.3.3",
+    "pandas==2.3.3",
+    "scikit-learn==1.7.2",
+    "scipy==1.16.2",
+    "fastapi==0.124.0",
+    "uvicorn[standard]==0.38.0",
+    "python-multipart==0.0.20",
+    "Jinja2==3.1.6",
+    "pymongo==3.12.0",
+    "mlflow==3.7.0",
+    "python-dotenv==1.1.1",
+    "PyYAML==6.0.3",
+    "certifi==2025.10.5",
+]
+
+[project.urls]
+Documentation = "https://github.com/Abhinavexists/Nexus#readme"
+Repository = "https://github.com/Abhinavexists/Nexus.git"
+Issues = "https://github.com/Abhinavexists/Nexus/issues"
+
+[tool.setuptools]
+packages = ["NetworkSecurity"]
