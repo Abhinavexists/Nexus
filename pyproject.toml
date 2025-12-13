@@ -36,6 +36,17 @@ dependencies = [
     "certifi==2025.10.5",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "isort>=5.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+    "pylint>=2.17",
+]
+
 [project.urls]
 Documentation = "https://github.com/Abhinavexists/Nexus#readme"
 Repository = "https://github.com/Abhinavexists/Nexus.git"
@@ -43,3 +54,68 @@ Issues = "https://github.com/Abhinavexists/Nexus/issues"
 
 [tool.setuptools]
 packages = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_gitignore = true
+multi_line_mode = 3
+include_trailing_comma = true
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+addopts = "--cov=src --cov-report=html --cov-report=term-missing"
+
+[tool.pylint.messages_control]
+disable = [
+    "C0330", "C0326",  # Bad whitespace
+    "R0913",           # Too many arguments
+    "R0914",           # Too many local variables
+]
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/__init__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
