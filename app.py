@@ -15,16 +15,16 @@ from uvicorn import run
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-from NetworkSecurity.utils.utils import load_object
-from NetworkSecurity.utils.estimator import NetworkModel
-from NetworkSecurity.pipeline.training_pipeline import TrainingPipeline
-from NetworkSecurity.constant.training_pipeline import (
+from src.utils.utils import load_object
+from src.utils.estimator import NetworkModel
+from src.pipeline.training_pipeline import TrainingPipeline
+from src.constant.training_pipeline import (
     DATA_INGESTION_DATABASE_NAME,
     DATA_INGESTION_COLLECTION_NAME,
 )
 
-from NetworkSecurity.exception.exception import CustomException
-from NetworkSecurity.logging.logging import logging
+from src.exception.exception import CustomException
+from src.logging.logging import logging
 
 load_dotenv()
 

@@ -8,8 +8,8 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 
-from NetworkSecurity.exception.exception import CustomException
-from NetworkSecurity.logging.logging import logging
+from src.exception.exception import CustomException
+from src.logging.logging import logging
 
 load_dotenv()
 
@@ -62,7 +62,7 @@ class NetworkDataExtract():
             raise CustomException(e)
         
 if __name__ == "__main__":
-    FILE_PATH = Path('NetworkData/phisingData.csv')
+    FILE_PATH = Path('data/phisingData.csv')
     DATABASE = 'NetworkDatabase'
     Collections = 'NetworkData'
     nde = NetworkDataExtract()

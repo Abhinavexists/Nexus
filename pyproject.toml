@@ -42,4 +42,4 @@ Repository = "https://github.com/Abhinavexists/Nexus.git"
 Issues = "https://github.com/Abhinavexists/Nexus/issues"
 
 [tool.setuptools]
-packages = ["NetworkSecurity"]
+packages = ["src"]
