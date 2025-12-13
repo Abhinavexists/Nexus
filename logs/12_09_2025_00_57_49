@@ -1,0 +1,21 @@
+[ 2025-12-09 00:57:50,030 ] 19 root - INFO - Initiate the data Ingestion
+[ 2025-12-09 00:57:51,508 ] 52 root - INFO - Feature store saved at: Artifacts/12_09_2025_00_57_50/data_ingestion/feature_store/phisingData.csv
+[ 2025-12-09 00:57:51,510 ] 68 root - INFO - Performing Train-Test split on dataframe.
+[ 2025-12-09 00:57:51,565 ] 79 root - INFO - Train and test data exported:
+Train → Artifacts/12_09_2025_00_57_50/data_ingestion/ingested/train.csv
+Test → Artifacts/12_09_2025_00_57_50/data_ingestion/ingested/test.csv
+[ 2025-12-09 00:57:51,565 ] 96 root - INFO - Data ingestion completed successfully.
+[ 2025-12-09 00:57:51,565 ] 22 root - INFO - Data Initialization completed
+[ 2025-12-09 00:57:51,568 ] 27 root - INFO - Initiate the data validation
+[ 2025-12-09 00:57:51,588 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-09 00:57:51,589 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-09 00:57:51,589 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-09 00:57:51,589 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-09 00:57:51,702 ] 30 root - INFO - Data validation completed
+[ 2025-12-09 00:57:51,703 ] 66 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2025-12-09 00:57:51,703 ] 68 root - INFO - Started Data Transformation
+[ 2025-12-09 00:57:51,724 ] 54 root - INFO - Entered get_data_transformer_object method of Transformation class
+[ 2025-12-09 00:57:51,724 ] 58 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-12-09 00:57:51,730 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-09 00:57:51,735 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-09 00:57:51,737 ] 36 root - INFO - Data Transformation Complete

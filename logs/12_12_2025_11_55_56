@@ -1,0 +1,33 @@
+[ 2025-12-12 11:55:58,914 ] 19 root - INFO - Initiate the data Ingestion
+[ 2025-12-12 11:56:01,330 ] 52 root - INFO - Feature store saved at: Artifacts/12_12_2025_11_55_58/data_ingestion/feature_store/phisingData.csv
+[ 2025-12-12 11:56:01,334 ] 68 root - INFO - Performing Train-Test split on dataframe.
+[ 2025-12-12 11:56:01,438 ] 79 root - INFO - Train and test data exported:
+Train → Artifacts/12_12_2025_11_55_58/data_ingestion/ingested/train.csv
+Test → Artifacts/12_12_2025_11_55_58/data_ingestion/ingested/test.csv
+[ 2025-12-12 11:56:01,438 ] 96 root - INFO - Data ingestion completed successfully.
+[ 2025-12-12 11:56:01,438 ] 22 root - INFO - Data Initialization completed
+[ 2025-12-12 11:56:01,442 ] 27 root - INFO - Initiate the data validation
+[ 2025-12-12 11:56:01,478 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-12 11:56:01,478 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-12 11:56:01,478 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-12 11:56:01,478 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-12 11:56:01,744 ] 30 root - INFO - Data validation completed
+[ 2025-12-12 11:56:01,744 ] 66 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2025-12-12 11:56:01,744 ] 68 root - INFO - Started Data Transformation
+[ 2025-12-12 11:56:01,784 ] 54 root - INFO - Entered get_data_transformer_object method of Transformation class
+[ 2025-12-12 11:56:01,784 ] 58 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-12-12 11:56:01,794 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-12 11:56:01,799 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-12 11:56:01,802 ] 36 root - INFO - Data Transformation Complete
+[ 2025-12-12 12:16:45,110 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=6, connect=6, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 12:16:49,856 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=5, connect=5, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 12:16:58,340 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=4, connect=4, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 12:17:15,122 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=3, connect=3, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 12:17:48,041 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=2, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 12:18:52,409 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=1, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 12:19:01,130 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-12 12:19:01,157 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-12 12:19:01,157 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-12 12:19:01,185 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-12 12:19:01,185 ] 132 root - INFO - Model trainer artifact: ModelTrainerArtifact(trained_model_file_path=PosixPath('Artifacts/12_12_2025_11_55_58/trained_model'), train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9911423799159792, precision_score=0.9888900111099889, recall_score=0.9934050324675324), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9860408658709285, precision_score=0.9806841046277666, recall_score=0.9914564686737185))
+[ 2025-12-12 12:19:01,186 ] 42 root - INFO - Model Training Complete

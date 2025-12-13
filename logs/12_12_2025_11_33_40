@@ -1,0 +1,27 @@
+[ 2025-12-12 11:33:40,954 ] 19 root - INFO - Initiate the data Ingestion
+[ 2025-12-12 11:33:47,153 ] 52 root - INFO - Feature store saved at: Artifacts/12_12_2025_11_33_40/data_ingestion/feature_store/phisingData.csv
+[ 2025-12-12 11:33:47,159 ] 68 root - INFO - Performing Train-Test split on dataframe.
+[ 2025-12-12 11:33:47,262 ] 79 root - INFO - Train and test data exported:
+Train → Artifacts/12_12_2025_11_33_40/data_ingestion/ingested/train.csv
+Test → Artifacts/12_12_2025_11_33_40/data_ingestion/ingested/test.csv
+[ 2025-12-12 11:33:47,262 ] 96 root - INFO - Data ingestion completed successfully.
+[ 2025-12-12 11:33:47,262 ] 22 root - INFO - Data Initialization completed
+[ 2025-12-12 11:33:47,266 ] 27 root - INFO - Initiate the data validation
+[ 2025-12-12 11:33:47,303 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-12 11:33:47,304 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-12 11:33:47,304 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-12 11:33:47,304 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-12 11:33:47,532 ] 30 root - INFO - Data validation completed
+[ 2025-12-12 11:33:47,532 ] 66 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2025-12-12 11:33:47,532 ] 68 root - INFO - Started Data Transformation
+[ 2025-12-12 11:33:47,566 ] 54 root - INFO - Entered get_data_transformer_object method of Transformation class
+[ 2025-12-12 11:33:47,566 ] 58 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-12-12 11:33:47,575 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-12 11:33:47,580 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-12 11:33:47,582 ] 36 root - INFO - Data Transformation Complete
+[ 2025-12-12 11:53:42,083 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=6, connect=6, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 11:53:46,242 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=5, connect=5, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 11:53:54,729 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=4, connect=4, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 11:54:11,115 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=3, connect=3, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 11:54:43,986 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=2, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create
+[ 2025-12-12 11:55:48,729 ] 868 urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=1, read=7, redirect=7, status=7)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/runs/create

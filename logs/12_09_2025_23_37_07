@@ -1,0 +1,27 @@
+[ 2025-12-09 23:37:08,321 ] 19 root - INFO - Initiate the data Ingestion
+[ 2025-12-09 23:37:10,997 ] 52 root - INFO - Feature store saved at: Artifacts/12_09_2025_23_37_08/data_ingestion/feature_store/phisingData.csv
+[ 2025-12-09 23:37:11,007 ] 68 root - INFO - Performing Train-Test split on dataframe.
+[ 2025-12-09 23:37:11,111 ] 79 root - INFO - Train and test data exported:
+Train → Artifacts/12_09_2025_23_37_08/data_ingestion/ingested/train.csv
+Test → Artifacts/12_09_2025_23_37_08/data_ingestion/ingested/test.csv
+[ 2025-12-09 23:37:11,111 ] 96 root - INFO - Data ingestion completed successfully.
+[ 2025-12-09 23:37:11,111 ] 22 root - INFO - Data Initialization completed
+[ 2025-12-09 23:37:11,121 ] 27 root - INFO - Initiate the data validation
+[ 2025-12-09 23:37:11,156 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-09 23:37:11,156 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-09 23:37:11,156 ] 34 root - INFO - Required Number of columns: 31
+[ 2025-12-09 23:37:11,156 ] 35 root - INFO - Dataframe has 31 columns
+[ 2025-12-09 23:37:11,436 ] 30 root - INFO - Data validation completed
+[ 2025-12-09 23:37:11,436 ] 66 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2025-12-09 23:37:11,436 ] 68 root - INFO - Started Data Transformation
+[ 2025-12-09 23:37:11,472 ] 54 root - INFO - Entered get_data_transformer_object method of Transformation class
+[ 2025-12-09 23:37:11,473 ] 58 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-12-09 23:37:11,484 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-09 23:37:11,495 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-09 23:37:11,499 ] 36 root - INFO - Data Transformation Complete
+[ 2025-12-09 23:57:47,085 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-09 23:57:47,090 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-09 23:57:47,090 ] 55 root - INFO - Entered the save_object method of utils
+[ 2025-12-09 23:57:47,091 ] 63 root - INFO - Exited the save_object method of utils
+[ 2025-12-09 23:57:47,091 ] 132 root - INFO - Model trainer artifact: ModelTrainerArtifact(trained_model_file_path=PosixPath('Artifacts/12_09_2025_23_37_08/trained_model'), train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9911334042660992, precision_score=0.989879566845461, recall_score=0.992390422077922), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9868287740628167, precision_score=0.98304400484457, recall_score=0.9906427990235964))
+[ 2025-12-09 23:57:47,092 ] 42 root - INFO - Model Training Complete
