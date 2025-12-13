@@ -122,7 +122,7 @@ class ModelTrainer:
             save_object(self.model_trainer_config.trained_model_file_path,obj = Network_Model)
 
             #model pusher
-            save_object(Path("final_model/model.pkl"), Network_Model)
+            save_object(Path("final_model/model.pkl"), best_model)
             save_object(Path("final_model/preprocessor.pkl"), preprocessor)
 
             ## Model Trainer Artifact

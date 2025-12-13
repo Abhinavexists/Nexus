@@ -4,6 +4,7 @@ from NetworkSecurity.components.data_ingestion import DataIngestion
 from NetworkSecurity.components.data_validation import DataValidation
 from NetworkSecurity.components.data_transformation import DataTransformation
 from NetworkSecurity.components.model_trainer import ModelTrainer
+from NetworkSecurity.cloud.s3_syncer import S3Sync
 
 from NetworkSecurity.entity.config import (
     TrainingPipelineConfig,
@@ -26,6 +27,7 @@ from NetworkSecurity.logging.logging import logging
 class TrainingPipeline:
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
+        self.s3_sync = S3Sync()
 
     def start_data_ingestion(self):
         try:
@@ -86,6 +88,26 @@ class TrainingPipeline:
 
         except Exception as e:
             raise CustomException(e) from e
+
+    # local artifact -> S3
+    def sync_artifact_to_s3(self):
+        try:
+            aws_bucket_url = f"s3://{TRAINING_BUCKET_NAME}/artifacts/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(folder = self.training_pipeline_config.artifact_dir,
+                                             aws_bucket_url = aws_bucket_url)
+
+        except Exception as e:
+            raise CustomException(e) from e
+
+    # final model -> S3
+    def sync_saved_model_dir_to_s3(self):
+        try:
+            aws_bucket_url = f"s3://{TRAINING_BUCKET_NAME}/final_models/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(folder = self.training_pipeline_config.model_dir,
+                                             aws_bucket_url = aws_bucket_url)
+
+        except Exception as e:
+            raise CustomException(e) from e
         
     def run_pipeline(self):
         try:
@@ -93,5 +115,9 @@ class TrainingPipeline:
             data_validation_artifact = self.start_data_validation(data_ingestion_artifact)
             data_transformation_artifact = self.start_data_trasformation(data_validation_artifact)
             model_trainer_artifact = self.start_model_trainer(data_transformation_artifact)
+
+            self.sync_artifact_to_s3()
+            self.sync_saved_model_dir_to_s3()
+            
         except Exception as e:
             raise CustomException(e) from e

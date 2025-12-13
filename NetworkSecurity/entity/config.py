@@ -26,6 +26,7 @@ class TrainingPipelineConfig:
             self.pipeline_name = training_pipeline.PIPELINE_NAME
             self.artifact_name = training_pipeline.ARTIFACT_DIR
             self.artifact_dir: Path = Path(self.artifact_name) / timestamp
+            self.model_dir: Path = Path("final_model") / timestamp
             self.timestamp: str = timestamp
 
         except Exception as e:
