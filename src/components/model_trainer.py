@@ -39,7 +39,7 @@ class ModelTrainer:
         except Exception as e:
             raise CustomException(e)
         
-    def track_mlfow(self, best_model, classificationmetric: ClassificationMetricArtifact):
+    def track_mlflow(self, best_model, classificationmetric: ClassificationMetricArtifact):
         with mlflow.start_run():
             f1_score = classificationmetric.f1_score
             precision_score = classificationmetric.precision_score
@@ -105,13 +105,13 @@ class ModelTrainer:
 
             classification_train_metric = get_classification_score(y_true=y_train,y_pred=y_train_pred)
 
-            self.track_mlfow(best_model, classification_train_metric)
+            self.track_mlflow(best_model, classification_train_metric)
 
             y_test_pred = best_model.predict(x_test)
             classification_test_metric = get_classification_score(y_true=y_test,y_pred=y_test_pred)
 
             # TODO: track with mlflow -> me
-            self.track_mlfow(best_model, classification_test_metric)
+            self.track_mlflow(best_model, classification_test_metric)
 
             preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
                 
